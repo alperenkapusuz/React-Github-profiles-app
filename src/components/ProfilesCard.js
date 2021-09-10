@@ -16,19 +16,22 @@ const ProfilesCard = ({userStats}) => {
         </Card.Content>
         <Card.Content extra>
           <a>
-            <Icon name="user" />
+            <Icon name="star outline" />
+            followers :
             {userStats.followers}
           </a>
         </Card.Content>
         <Card.Content extra>
           <a>
             <Icon name="user" />
+            following :
             {userStats.following}
           </a>
         </Card.Content>
         <Card.Content extra>
           <a>
-            <Icon name="user" />
+            <Icon name="github" />
+            repos :
             {userStats.public_repos}
           </a>
         </Card.Content>
