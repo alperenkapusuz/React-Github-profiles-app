@@ -14,7 +14,7 @@ const App = () => {
   function handleSubmit(e) {
     e.preventDefault();
     searchRepos();
-    searchUsersStats()
+    searchUsersStats();
   }
 
   function searchUsersStats() {
@@ -61,8 +61,12 @@ const App = () => {
           </Form.Group>
         </Form>
       </div>
-      <div><ProfilesCard userStats={userStats} /></div>
-      <div>{repos.map(renderRepo)}</div>
+      <div className="components">
+        <div className="profilescard">
+          <ProfilesCard userStats={userStats} />
+        </div>
+        <div className="card">{repos.map(renderRepo)}</div>
+      </div>
     </div>
   );
 };

@@ -14,3 +14,13 @@
 .form-input{
     width: 500px;
 }
+
+.components{
+    margin: auto 20px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.profilescard{
+    margin-bottom: 10px;
+}
