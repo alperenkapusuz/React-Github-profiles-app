@@ -2,16 +2,30 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form } from "semantic-ui-react";
 import RepositoriesTable from "./components/RepositoriesTable";
+import ProfilesCard from "./components/ProfilesCard";
 import "./App.css";
 
 const App = () => {
   const [username, setUsername] = useState("");
   const [loading, setLoading] = useState(false);
   const [repos, setRepos] = useState([]);
+  const [userStats, setUserStats] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
     searchRepos();
+    searchUsersStats()
+  }
+
+  function searchUsersStats() {
+    setLoading(true);
+    axios({
+      method: "get",
+      url: `https://api.github.com/users/${username}`,
+    }).then((res) => {
+      setLoading(false);
+      setUserStats(res.data);
+    });
   }
 
   function searchRepos() {
@@ -47,6 +61,7 @@ const App = () => {
           </Form.Group>
         </Form>
       </div>
+      <div><ProfilesCard userStats={userStats} /></div>
       <div>{repos.map(renderRepo)}</div>
     </div>
   );
