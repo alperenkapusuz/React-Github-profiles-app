@@ -1,0 +1,16 @@
+.form-div{
+    background-color:#24292f;
+    height: 70px;
+
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    
+}
+
+.form-input{
+    width: 500px;
+}
