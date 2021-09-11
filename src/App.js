@@ -10,11 +10,13 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [repos, setRepos] = useState([]);
   const [userStats, setUserStats] = useState([]);
+  const [userStatistics, setUsetStatistics] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
     searchRepos();
     searchUsersStats();
+    searchUserStatistics();
   }
 
   function searchUsersStats() {
@@ -28,9 +30,20 @@ const App = () => {
     });
   }
 
+  function searchUserStatistics(){
+    setLoading(true)
+    axios({
+      method: "get",
+      url: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=radical`,
+    }).then((res) => {
+      setLoading(false)
+      setUsetStatistics(res.data)
+    })
+  }
+
   function searchRepos() {
     setLoading(true);
-    axios({
+    axios({ 
       method: "get",
       url: `https://api.github.com/users/${username}/repos`,
     }).then((res) => {
