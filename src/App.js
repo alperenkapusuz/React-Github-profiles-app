@@ -3,6 +3,7 @@ import axios from "axios";
 import { Form } from "semantic-ui-react";
 import RepositoriesTable from "./components/RepositoriesTable";
 import ProfilesCard from "./components/ProfilesCard";
+import StatisticsContainer from "./components/StatisticsContainer";
 import "./App.css";
 
 const App = () => {
@@ -10,13 +11,11 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [repos, setRepos] = useState([]);
   const [userStats, setUserStats] = useState([]);
-  const [userStatistics, setUsetStatistics] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
     searchRepos();
     searchUsersStats();
-    searchUserStatistics();
   }
 
   function searchUsersStats() {
@@ -30,16 +29,6 @@ const App = () => {
     });
   }
 
-  function searchUserStatistics(){
-    setLoading(true)
-    axios({
-      method: "get",
-      url: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=radical`,
-    }).then((res) => {
-      setLoading(false)
-      setUsetStatistics(res.data)
-    })
-  }
 
   function searchRepos() {
     setLoading(true);
@@ -51,6 +40,7 @@ const App = () => {
       setRepos(res.data);
     });
   }
+  
 
   function renderRepo(repo) {
     return <RepositoriesTable repo={repo} />;
@@ -77,6 +67,9 @@ const App = () => {
       <div className="components">
         <div className="profilescard">
           <ProfilesCard userStats={userStats} />
+          <div className="statisticscontainer">
+          <StatisticsContainer username={username}/>
+        </div>
         </div>
         <div className="repositoriestable">{repos.map(renderRepo)}</div>
       </div>
