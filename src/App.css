@@ -24,3 +24,9 @@
 .profilescard{
     margin-bottom: 10px;
 }
+
+.repositoriestable{
+    border-style: groove;
+    padding: 10px;
+    border-radius: 10px;
+}

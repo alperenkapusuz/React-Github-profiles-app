@@ -65,7 +65,7 @@ const App = () => {
         <div className="profilescard">
           <ProfilesCard userStats={userStats} />
         </div>
-        <div className="card">{repos.map(renderRepo)}</div>
+        <div className="repositoriestable">{repos.map(renderRepo)}</div>
       </div>
     </div>
   );
